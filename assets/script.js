@@ -1,5 +1,5 @@
 // First Page
-let audio=new Audio('./audio.mp3')
+let audio=new Audio('./assets/assets/audio.mp3')
 let firstSection=document.querySelector(".first_section")
 let playbtn=document.querySelector("#play")
 
