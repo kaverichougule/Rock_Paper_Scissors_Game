@@ -1,5 +1,6 @@
 // First Page
 let audio=new Audio('./assets/audio.mp3')
+let audio2=new Audio('./assets/audio2.mp3')
 let firstSection=document.querySelector(".first_section")
 let playbtn=document.querySelector("#play")
 let Main_container=document.querySelector(".container")
@@ -78,13 +79,13 @@ function MatchTheConditions(userValue,ComputerValue){
             // resultMessage.innerText="You Won!! "+userValue+" beats "+ComputerValue
             Calculated_UserScore++ 
             userScore_id.innerText=Calculated_UserScore       
-            return "You Win!! "+userValue+" beats "+ComputerValue
+            return userValue+" beats "+ComputerValue
         }
         else{
             // resultMessage.innerText="You Loose!! "+ComputerValue+" beats "+userValue
             Calculated_ComputerScore++
             computerScore_id.innerText=Calculated_ComputerScore
-            return "You Loose!! "+ComputerValue+" beats "+userValue
+            return ComputerValue+" beats "+userValue
         }
     }
     else{
@@ -94,17 +95,17 @@ function MatchTheConditions(userValue,ComputerValue){
             let Main_container=document.querySelector(".container")
             finalresult.style.display="block"
             Main_container.style.display="none"
-            finalMessage.innerText="You Loose!!"            
+            finalMessage.innerText="You Loose😔!!"            
         }
         else{
+            audio2.play()
             finalresult.style.display="block"
             Main_container.style.display="none"
-            finalMessage.innerText="Hurrayy!! You Win"
+            finalMessage.innerText="Hurrayy!! You Win🥳"
             return "You Won"
         }
         let playAgain=document.querySelector("#play_again")
         playAgain.addEventListener('click',()=>{
-            audio.play()
             firstSection.style.display="flex"
             Main_container.style.display="none"
             finalresult.style.display="none"
