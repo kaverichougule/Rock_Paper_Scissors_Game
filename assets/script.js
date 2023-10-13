@@ -80,13 +80,13 @@ function MatchTheConditions(userValue,ComputerValue){
             // resultMessage.innerText="You Won!! "+userValue+" beats "+ComputerValue
             Calculated_UserScore++ 
             userScore_id.innerText=Calculated_UserScore       
-            return userValue+" beats "+ComputerValue
+            return "You Win "+userValue+" beats "+ComputerValue
         }
         else{
             // resultMessage.innerText="You Loose!! "+ComputerValue+" beats "+userValue
             Calculated_ComputerScore++
             computerScore_id.innerText=Calculated_ComputerScore
-            return ComputerValue+" beats "+userValue
+            return "Computer Win's "+ComputerValue+" beats "+userValue
         }
     }
     else{
