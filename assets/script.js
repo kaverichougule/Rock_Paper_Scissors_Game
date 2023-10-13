@@ -95,17 +95,23 @@ function MatchTheConditions(userValue,ComputerValue){
             let Main_container=document.querySelector(".container")
             finalresult.style.display="block"
             Main_container.style.display="none"
-            finalMessage.innerText="You Loose😔!!"            
+            finalMessage.innerText="You Loose😔!!"      
         }
-        else{
+        else if(Calculated_ComputerScore<Calculated_UserScore){
             audio2.play()
             finalresult.style.display="block"
             Main_container.style.display="none"
-            finalMessage.innerText="Hurrayy!! You Win🥳"
-            return "You Won"
+            finalMessage.innerText="Hurrayy!! You Win🥳"            
+        }
+        else{
+            finalresult.style.display="block"
+            Main_container.style.display="none"
+            finalMessage.innerText="It's a tie🤝" 
+
         }
         let playAgain=document.querySelector("#play_again")
         playAgain.addEventListener('click',()=>{
+            audio.play()
             firstSection.style.display="flex"
             Main_container.style.display="none"
             finalresult.style.display="none"
