@@ -1,12 +1,13 @@
 // First Page
 let audio=new Audio('./assets/audio.mp3')
+let click=new Audio('./assets/click.mp3')
 let audio2=new Audio('./assets/audio2.mp3')
 let firstSection=document.querySelector(".first_section")
 let playbtn=document.querySelector("#play")
 let Main_container=document.querySelector(".container")
 
 playbtn.addEventListener('click',()=>{
-    audio.play()
+    click.play()
     firstSection.style.display="none"
     Main_container.style.display="block"
 })
@@ -111,7 +112,7 @@ function MatchTheConditions(userValue,ComputerValue){
         }
         let playAgain=document.querySelector("#play_again")
         playAgain.addEventListener('click',()=>{
-            audio.play()
+            click.play()
             firstSection.style.display="flex"
             Main_container.style.display="none"
             finalresult.style.display="none"
