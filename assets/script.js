@@ -2,10 +2,10 @@
 let audio=new Audio('./assets/audio.mp3')
 let firstSection=document.querySelector(".first_section")
 let playbtn=document.querySelector("#play")
+let Main_container=document.querySelector(".container")
 
 playbtn.addEventListener('click',()=>{
     audio.play()
-    let Main_container=document.querySelector(".container")
     firstSection.style.display="none"
     Main_container.style.display="block"
 })
@@ -46,15 +46,19 @@ const userScore_id=document.querySelector("#yourScore")
 const computerScore_id=document.querySelector("#computerScore")
 let Calculated_UserScore=0
 let Calculated_ComputerScore=0
-for(let i=0;i<3;i++){
-    color_div[i].addEventListener('click',()=>{
-        // console.log(color_div[i].innerText)
-        audio.play()
-        let result=MatchTheConditions(color_div[i].innerText,ComputerOutput())
-        resultMessage.innerText=result
-        
-    })
-}
+    // if(Calculated_UserScore==5 || Calculated_ComputerScore==5){
+    //     console.log("This works")
+    // }
+    for(let i=0;i<3;i++){
+        color_div[i].addEventListener('click',()=>{
+            // console.log(color_div[i].innerText)
+            audio.play()
+            let result=MatchTheConditions(color_div[i].innerText,ComputerOutput())
+            resultMessage.innerText=result
+        })
+    }
+
+
 
 // Computer Value
 function ComputerOutput(){
@@ -65,21 +69,52 @@ function ComputerOutput(){
 
 // Check for the winner
 function MatchTheConditions(userValue,ComputerValue){
-    if(userValue==ComputerValue){
-        // resultMessage.innerText="It's a tie"
-        return "It's a tie"
-    }
-    else if((userValue=="👊" && ComputerValue==="✂️") || (userValue=="✂️" && ComputerValue==="🖐️") || (userValue=="🖐️" && ComputerValue==="👊")){
-        // resultMessage.innerText="You Won!! "+userValue+" beats "+ComputerValue
-        Calculated_UserScore++ 
-        userScore_id.innerText=Calculated_UserScore       
-        return "You Won!! "+userValue+" beats "+ComputerValue
+    if(Calculated_UserScore<5 && Calculated_ComputerScore<5){
+        if(userValue==ComputerValue){
+            // resultMessage.innerText="It's a tie"
+            return "It's a tie"
+        }
+        else if((userValue=="👊" && ComputerValue==="✂️") || (userValue=="✂️" && ComputerValue==="🖐️") || (userValue=="🖐️" && ComputerValue==="👊")){
+            // resultMessage.innerText="You Won!! "+userValue+" beats "+ComputerValue
+            Calculated_UserScore++ 
+            userScore_id.innerText=Calculated_UserScore       
+            return "You Win!! "+userValue+" beats "+ComputerValue
+        }
+        else{
+            // resultMessage.innerText="You Loose!! "+ComputerValue+" beats "+userValue
+            Calculated_ComputerScore++
+            computerScore_id.innerText=Calculated_ComputerScore
+            return "You Loose!! "+ComputerValue+" beats "+userValue
+        }
     }
     else{
-        // resultMessage.innerText="You Loose!! "+ComputerValue+" beats "+userValue
-        Calculated_ComputerScore++
-        computerScore_id.innerText=Calculated_ComputerScore
-        return "You Loose!! "+ComputerValue+" beats "+userValue
+        let finalresult=document.querySelector(".Final_Result")
+        let finalMessage=document.querySelector(".finalMessage")
+        if(Calculated_ComputerScore>Calculated_UserScore){
+            let Main_container=document.querySelector(".container")
+            finalresult.style.display="block"
+            Main_container.style.display="none"
+            finalMessage.innerText="You Loose!!"            
+        }
+        else{
+            finalresult.style.display="block"
+            Main_container.style.display="none"
+            finalMessage.innerText="Hurrayy!! You Win"
+            return "You Won"
+        }
+        let playAgain=document.querySelector("#play_again")
+        playAgain.addEventListener('click',()=>{
+            audio.play()
+            firstSection.style.display="flex"
+            Main_container.style.display="none"
+            finalresult.style.display="none"
+            Calculated_ComputerScore=0
+            Calculated_UserScore=0
+            userScore_id.innerText=0
+            computerScore_id.innerText=0
+            resultMessage.innerText=""
+        })
     }
 }
+
 

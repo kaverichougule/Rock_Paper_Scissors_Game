@@ -104,3 +104,22 @@ body{
     display: flex;
     justify-content: space-between;
 }
+.Final_Result{
+    display: none;
+    text-align: center;
+}
+.playAgain{
+    height: 50px;
+    width: 250px;
+    font-size: 30px;
+    font-family: 'Croissant One',sans-serif;
+    transition: all 0.5s;  
+    border-radius: 10px;
+    position: relative;
+}
+.playAgain:hover{
+    box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    background-color: blueviolet;
+    color: white;
+}
