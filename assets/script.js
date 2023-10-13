@@ -1,5 +1,5 @@
 // First Page
-let audio=new Audio('./assets/assets/audio.mp3')
+let audio=new Audio('./assets/audio/audio.mp3')
 let firstSection=document.querySelector(".first_section")
 let playbtn=document.querySelector("#play")
 
@@ -82,5 +82,4 @@ function MatchTheConditions(userValue,ComputerValue){
         return "You Loose!! "+ComputerValue+" beats "+userValue
     }
 }
-
 
